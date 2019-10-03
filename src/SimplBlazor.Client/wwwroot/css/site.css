@@ -2,7 +2,7 @@
 
 html,
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   color: #b2b2b2;
 }
@@ -78,4 +78,73 @@ body {
   height: 400px;
   background-position: top center;
   background-repeat: no-repeat;
+}
+
+/* widget */
+section.widget-container {
+  padding: 2rem 0;
+}
+
+section.widget-container > header {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #333;
+}
+
+.widgets {
+  display: flex;
+}
+
+.widget {
+  width: 25%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  transition: all 0.3s ease-in-out;
+  transition-property: box-shadow, transform;
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.widget__image {
+  display: block;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.widget__image img {
+  display: block;
+  max-width: 100%;
+}
+
+.widget__footer {
+  min-height: 63px;
+}
+
+.product__name {
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.widget:hover {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  z-index: 1;
+  transform: translateY(-8px);
+}
+
+.price.price__old {
+  font-size: 0.8rem;
+  text-decoration: line-through;
+}
+
+.price.price__current {
+  color: #f42;
+  font-weight: 600;
+  font-size: 0.85rem;
 }
