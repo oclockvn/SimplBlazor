@@ -1,5 +1,73 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+@import url("open-iconic/font/css/open-iconic-bootstrap.min.css");
 
-html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+html,
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: #b2b2b2;
+}
+
+/* topbar */
+.topbar-container {
+  height: 40px;
+  background: #222;
+  color: #b2b2b2;
+  font-size: 0.85rem;
+}
+
+.topbar-container a {
+  color: #b2b2b2;
+  line-height: 40px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.topbar-container a + a {
+  border-left: 1px solid;
+}
+
+.topbar__left {
+  line-height: 40px;
+}
+
+/* header */
+.menu a {
+  color: #333;
+  padding: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.header a:hover {
+  color: #c5970d;
+  text-decoration: none;
+}
+
+.header a {
+  transition: 0.25s ease;
+}
+
+.menu-right-button {
+  display: inline-flex;
+  border: none;
+  background: #fff;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+}
+
+.menu-right-button.search-button {
+  border: 1px solid #eee;
 }
