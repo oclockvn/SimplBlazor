@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="product__action">
-                    <button type="button" class="btn btn-outline-primary btn-lg">
+                    <button type="button" class="btn btn-outline-primary btn-lg" @onclick="AddToCart">
                         Add To Card
                     </button>
                 </div>
@@ -66,13 +66,36 @@
     </div>
 </section>
 
+@if (_showCartDialog)
+{
+    <CartDialogComponent
+        AddedProduct="@_product.Name"
+        OnCancel="OnContinueShopping"
+        OnOk="OnGotoCheckout"/>
+}
 
 @code {
     [Parameter] public string Slug { get; set; }
-    Product _product;
+    private Product _product;
+    private bool _showCartDialog;
 
     protected override async Task OnInitializedAsync()
     {
         _product = await _http.GetJsonAsync<Product>($"https://localhost:44323/api/product/{Slug}");
+    }
+
+    private void AddToCart()
+    {
+        _showCartDialog = true;
+    }
+
+    private void OnContinueShopping()
+    {
+        _showCartDialog = false;
+    }
+
+    private void OnGotoCheckout()
+    {
+        _showCartDialog = false;
     }
 }
