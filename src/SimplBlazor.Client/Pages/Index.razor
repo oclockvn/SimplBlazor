@@ -1,3 +1,32 @@
-﻿@page "/"
+@page "/"
+@inject HttpClient _httpClient;
 
 <Slider />
+
+<div class="container">
+    <section class="widget-container">
+        <header class="mb-3">latest product</header>
+        <div class="widgets">
+            @if (_products == null)
+            {
+                <LoadingComponent />
+            }
+            else
+            {
+                foreach (var p in _products)
+                {
+                    <ProductComponent Data="p" />
+                }
+            }
+        </div>
+    </section>
+</div>
+
+@code {
+    List<Product> _products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _products = await _httpClient.GetJsonAsync<List<Product>>("api/products");
+    }
+}

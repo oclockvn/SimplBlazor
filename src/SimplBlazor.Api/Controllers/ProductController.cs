@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SimplBlazor.Shared.Models;
 
@@ -9,9 +10,10 @@ namespace SimplBlazor.Api.Controllers
     public class ProductController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var products = ProductSource();
+            await Task.Delay(2000);
+            var products = await Task.FromResult(ProductSource());
 
             return Ok(products);
         }
@@ -29,7 +31,7 @@ namespace SimplBlazor.Api.Controllers
                     OldPrice = 1500,
                     Price = 1499,
                     Specification = "",
-                    Star = 3,
+                    Rating = 3,
                     Thumbnail = "p1.jpg"
                 },
                 new Product
@@ -41,7 +43,7 @@ namespace SimplBlazor.Api.Controllers
                     OldPrice = 500,
                     Price = 499,
                     Specification = "",
-                    Star = 5,
+                    Rating = 5,
                     Thumbnail = "p2.jpg"
                 },
                 new Product
@@ -53,7 +55,7 @@ namespace SimplBlazor.Api.Controllers
                     OldPrice = null,
                     Price = 399,
                     Specification = "",
-                    Star = 4,
+                    Rating = 4,
                     Thumbnail = "p3.jpg"
                 },
                 new Product
@@ -65,7 +67,7 @@ namespace SimplBlazor.Api.Controllers
                     OldPrice = 0,
                     Price = 989,
                     Specification = "",
-                    Star = 5,
+                    Rating = 5,
                     Thumbnail = "p4.jpg"
                 }
             };
