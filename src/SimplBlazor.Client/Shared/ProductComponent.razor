@@ -1,16 +1,16 @@
 
 <div class="widget">
-    <a href="#" class="widget__image">
+    <a href="/p/@Data.Slug" class="widget__image">
         <img src="images/products/@Data.Thumbnail" alt="product">
     </a>
     <div class="widget__footer">
-        <a href="#" class="product__name">@Data.Name</a>
+        <a href="/p/@Data.Slug" class="product__name">@Data.Name</a>
         <div class="align-items-center d-flex justify-content-between">
             <div>
-                <div class="price price__current">$@Data.Price</div>
+                <div class="price price__current">$@Data.Price.ToString("C")</div>
                 @if (Data.OldPrice > 0)
                 {
-                    <div class="price price__old">$@Data.OldPrice</div>
+                    <div class="price price__old">$@Data.OldPrice.Value.ToString("C")</div>
                 }
             </div>
             <div>
