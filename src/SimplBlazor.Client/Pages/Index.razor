@@ -1,5 +1,5 @@
 @page "/"
-@inject HttpClient _httpClient;
+@inject HttpClient _httpClient
 
 <Slider />
 
@@ -27,6 +27,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        _products = await _httpClient.GetJsonAsync<List<Product>>("api/products");
+        _products = await _httpClient.GetJsonAsync<List<Product>>("https://localhost:44323/api/product");
     }
 }
