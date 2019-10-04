@@ -1,37 +1,17 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">SimplBlazor.Client</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
+﻿<div class="align-items-center d-flex header-inner py-4">
+  <a href="#" class="logo mr-5">Simple Blazor</a>
+  <nav class="flex-fill menu">
+    <a href="#">Phones</a>
+    <a href="#">Tablets</a>
+    <a href="#">Computers</a>
+    <a href="#">Accessories</a>
+  </nav>
+  <div class="menu-right">
+    <button type="button" class="menu-right-button search-button">
+      <i class="zmdi zmdi-search"></i>
     </button>
+    <button type="button" class="menu-right-button">
+      <i class="zmdi zmdi-shopping-cart"></i>
+    </button>
+  </div>
 </div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-    </ul>
-</div>
-
-@code {
-    bool collapseNavMenu = true;
-
-    string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
