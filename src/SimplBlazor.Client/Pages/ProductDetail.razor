@@ -1,0 +1,78 @@
+@page "/p/{slug}"
+@inject HttpClient _http
+
+<section class="container">
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="#">Phones</a>
+        </li>
+        <li>
+            @_product?.Name
+        </li>
+    </ul>
+</section>
+
+<section class="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="product__image">
+                    @if (_product != null)
+                    {
+                        <img src="./images/products/@_product.Image" alt="iphone">
+                    }
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h1 class="product__name">@_product?.Name</h1>
+                <div class="product__review mb-3">
+                    <div>
+                        <RatingComponent Rating="@(_product?.Rating ?? 0)" />
+                    </div>
+                    <div>
+                        (0) reviews | Add review
+                    </div>
+                </div>
+
+                <div class="product__spec mb-3">@_product?.Specification</div>
+
+                <div class="product__price mb-3">
+                    <div class="price price__current" style="font-size: 2rem">@(_product?.Price.ToString("C"))</div>
+                    @if (_product?.OldPrice > 0)
+                    {
+                        <div class="price price__old">@_product?.OldPrice.Value.ToString("C")</div>
+                    }
+                </div>
+
+                <div class="product__action">
+                    <button type="button" class="btn btn-outline-primary btn-lg">
+                        Add To Card
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product__detail product-section mb-3">
+            <h3>Product details</h3>
+            <div>
+                @_product?.Details
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+@code {
+    [Parameter] public string Slug { get; set; }
+    Product _product;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _product = await _http.GetJsonAsync<Product>($"https://localhost:44323/api/product/{Slug}");
+    }
+}
