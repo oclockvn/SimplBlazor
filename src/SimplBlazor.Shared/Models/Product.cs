@@ -10,6 +10,6 @@ namespace SimplBlazor.Shared.Models
         public decimal? OldPrice { get; set; }
         public string Specification { get; set; }
         public string Details { get; set; }
-        public int Star { get; set; }
+        public int Rating { get; set; }
     }
 }
