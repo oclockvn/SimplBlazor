@@ -1,5 +1,6 @@
 @page "/p/{slug}"
 @inject HttpClient _http
+@inject NavigationManager _navigationManager
 
 <section class="container">
     <ul class="breadcrumb">
@@ -97,5 +98,6 @@
     private void OnGotoCheckout()
     {
         _showCartDialog = false;
+        _navigationManager.NavigateTo("/cart");
     }
 }
