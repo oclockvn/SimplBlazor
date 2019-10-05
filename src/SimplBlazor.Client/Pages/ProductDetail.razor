@@ -1,5 +1,6 @@
 @page "/p/{slug}"
 @inject HttpClient _http
+@inject OrderState _orderState
 
 <section class="container">
     <ul class="breadcrumb">
@@ -86,6 +87,9 @@
 
     private void AddToCart()
     {
+        System.Diagnostics.Debug.WriteLine($"adding to cart product {_product.Name}");
+        _orderState.AddToCart(_product);
+        System.Diagnostics.Debug.WriteLine($"cart items = {_orderState.Order.Products.Count}, total = {_orderState.Order.TotalPriceFormatted}");
         _showCartDialog = true;
     }
 

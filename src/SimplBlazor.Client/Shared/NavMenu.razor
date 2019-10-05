@@ -1,3 +1,5 @@
+@inject OrderState _orderState
+
 <div class="align-items-center d-flex header-inner py-4">
   <a href="/" class="logo mr-5">Simple Blazor</a>
   <nav class="flex-fill menu">
@@ -11,7 +13,14 @@
       <i class="zmdi zmdi-search"></i>
     </button>
     <button type="button" class="menu-right-button">
-      <i class="zmdi zmdi-shopping-cart"></i>
+      <i class="zmdi zmdi-shopping-cart"></i> (@(_orderState.Order.Products.Count))
     </button>
   </div>
 </div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        _orderState.OrderChanged += StateHasChanged;
+    }
+}
